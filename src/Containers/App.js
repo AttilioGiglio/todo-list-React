@@ -7,9 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        data: [
-            { todo: 'cooking' },
-        ]
+        data: []
     };
 }
 
@@ -22,7 +20,7 @@ handleSubmit = (newVal)=>{
     return (
       <div className='app'>
         <h1>To do list!</h1>
-        <TodoForm onSubmit= {this.handleSubmit} />
+        <TodoForm handleSubmit= {this.handleSubmit} />
         <TodoList todo={data} />
       </div>
     )

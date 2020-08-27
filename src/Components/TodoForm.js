@@ -6,11 +6,10 @@ class TodoForm extends Component {
         this.state={
             todo:'',
         }
-        this.handleInput = this.handleInput.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    handleInput(e){
-        console.log(e);
+    handleOnChange(e){
         const {name, value} = e.target;
         this.setState({
             [name]: value,
@@ -19,8 +18,8 @@ class TodoForm extends Component {
 
     handleOnSubmit = (e) =>{
         e.preventDefault(e);
-        this.props.onSubmit(this.state);
-        this.setState(this.inputValue);
+        const {handleSubmit} = this.props;
+        handleSubmit(this.state);
     }
 
     render() {
@@ -31,7 +30,7 @@ class TodoForm extends Component {
                      name='todo'
                      type='text' 
                      placeholder='Write down your next task!'
-                     onChange={this.handleInput}
+                     onChange={this.handleOnChange}
                      required />
                     <button className='btnInput' type='submit'>Submit</button>
                 </form>
