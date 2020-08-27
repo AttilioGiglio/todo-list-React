@@ -1,47 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
-import TodoInput from '../Components/TodoInput.js';
-import TodoList from '../Components/TodoList.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import TodoForm from '../Components/TodoForm';
+import TodoList from '../Components/TodoList';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      todo: [],
-    }
-  }
-  
+        data: [
+            { todo: 'cooking' },
+        ]
+    };
+}
+
+handleSubmit = (newVal)=>{
+  this.setState({data:[...this.state.data, newVal]})
+}
+
   render() {
-    const element = <FontAwesomeIcon icon={faCoffee} />
+    const {data} =this.state;
     return (
-      
       <div className='app'>
         <h1>To do list!</h1>
-        <form className='form-user'>
-          <input className='input' type='text' required />
-          <button className='btnInput' type='submit'>Submit</button>
-        </form>
-        <div className='todoList'>
-          <ul style={{padding:'0'}}>
-          <div className='todo'>
-            <li>Cooking</li>
-            <button className='complete btn' type='submit'></button>
-            <button className='delete btn' type='submit'></button>
-          </div>
-          <div className='todo'>
-            <li>Cooking</li>
-            <button className='complete btn' type='submit'></button>
-            <button className='delete btn' type='submit'></button>
-          </div>
-          <div className='todo'>
-            <li>Cooking</li>
-            <button className='complete btn' type='submit'></button>
-            <button className='delete btn' type='submit'></button>
-          </div>
-          </ul>
-        </div>
+        <TodoForm onSubmit= {this.handleSubmit} />
+        <TodoList todo={data} />
       </div>
     )
   }

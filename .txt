@@ -1,0 +1,53 @@
+#FONTAWESOMEICONS
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+    import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+    
+        const element = <FontAwesomeIcon icon={faCoffee} />
+
+#FORM TO DO LIST -- JSX
+    <div className='todoList'>
+        <ul style={{ padding: '0' }}>
+            <div className='todo'>
+                <li>Cooking</li>
+                <button className='complete btn' type='submit'></button>
+                <button className='delete btn' type='submit'></button>
+            </div>
+            <div className='todo'>
+                <li>Cooking</li>
+                <button className='complete btn' type='submit'></button>
+                <button className='delete btn' type='submit'></button>
+            </div>
+            <div className='todo'>
+                <li>Cooking</li>
+                <button className='complete btn' type='submit'></button>
+                <button className='delete btn' type='submit'></button>
+            </div>
+        </ul>
+    </div>
+
+#FORM TO DO LIST -- THIS.STATE
+    constructor(props){
+        super(props);
+        this.state = [
+            {todo:'cooking'},
+            {todo:'cleaning'},
+            {todo:'studying'},
+            {todo:'sleeping'}
+        ];
+    }
+
+    render() {
+        return (
+            <div className='todoList'>
+                <ul style={{ padding: '0' }}>
+                    <div className='todoItem'>
+                        <Todo item={this.state[0].todo} />
+                        <Todo item={TodoList.state[1].todo} />
+                        <Todo item={TodoList.state[2].todo} />
+                        <Todo item={TodoList.state[3].todo} />
+                    </div>
+                </ul>
+            </div>
+        )
+    }
+}

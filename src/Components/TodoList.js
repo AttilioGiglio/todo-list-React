@@ -1,10 +1,18 @@
 import React from 'react';
+import Todo from './Todo';
 
 class TodoList extends React.Component {
     render() {
+        const {todo} = this.props;
         return (
-            <div className='box'>
-                <h2>Giglio</h2>
+            <div className='todoList'>
+                <ul style={{ padding: '0' }}>
+                    <div className='todoItem'>
+                        {todo.map((item,index)=>{
+                            return <Todo item={item.todo} key={index}/>
+                        })}
+                    </div>
+                </ul>
             </div>
         )
     }
