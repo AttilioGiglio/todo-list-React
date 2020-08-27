@@ -6,19 +6,40 @@ import './Todo.css';
     
 
 class Todo extends Component {
+    constructor(){
+        super();
+        this.state={
+            onEdit:false,
+            editVal:this.props.item,
+        }
+    }
     render() {
-        const {item} = this.props;
-        return (
-            <div className='todo'>
-                <li>{item}</li>
-                <button className='btn'>
-                {<FontAwesomeIcon icon={faPen} className='icon' />}
-                </button>
-                <button className='btn'>
-                {<FontAwesomeIcon icon={faTrash} className='icon'/>}
-                </button>
-            </div>
-        )
+        const {item, handleDelete} = this.props;
+        if(this.state.onEdit){
+            return (
+                <div className='todo'>
+                    <li>
+                    <input 
+                    type='text'
+                    name='editVal'   
+                    onChange={this.handleEditValue}
+                    /> 
+                    {item}
+                    </li>
+                    <button className='btn'>
+                    {<FontAwesomeIcon icon={faPen} className='icon' />}
+                    </button>
+                    <button className='btn' onClick={handleDelete}>
+                    {<FontAwesomeIcon icon={faTrash} className='icon'/>}
+                    </button>
+                </div>
+            )
+        }
+       else{
+           return(
+
+           )
+       }
     }
 }
 

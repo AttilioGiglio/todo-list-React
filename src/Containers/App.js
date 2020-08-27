@@ -15,13 +15,22 @@ handleSubmit = (newVal)=>{
   this.setState({data:[...this.state.data, newVal]})
 }
 
+handleRemove = (index) => {
+  const {data} =  this.state;
+  this.setState({data:data.filter((item,i)=>{
+    return i !== index
+    
+  })})
+
+}
+
   render() {
     const {data} =this.state;
     return (
       <div className='app'>
         <h1>To do list!</h1>
         <TodoForm handleSubmit= {this.handleSubmit} />
-        <TodoList todo={data} />
+        <TodoList todo={data} onDelete={this.handleRemove} />
       </div>
     )
   }
